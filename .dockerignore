@@ -1,0 +1,7 @@
+.git
+.gitignore
+.eslintrs.js
+node_modules
+LICENSE
+README.md
+test.js
