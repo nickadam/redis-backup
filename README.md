@@ -2,7 +2,7 @@
 
 #### Utilities for backup and restore of redis
 
-Call me crazy but I prefer text backups of files that I can manually decode and
+Call me crazy but I prefer text backups in files that I can manually decode and
 inspect using simple tools. Problem is, some things can get lost in translation.
 redis-backup provides simple backup and restore utilities.
 
