@@ -8,7 +8,7 @@ const redis = require('redis'),
   rdb = redis.createClient('redis://' + args.server)
 
 if(args.action === 'backup'){
-  get_keys.then(keys => {
+  get_keys(rdb).then(keys => {
     const promises = []
     for(const i in keys){
       const key = keys[i]
@@ -26,8 +26,19 @@ if(args.action === 'backup'){
       rdb.quit()
       csv.write(results, { headers: true })
         .pipe(fs.createWriteStream(args.file))
+      console.log(results.length + ' records backed up')
     })
   })
-}else if(args.action === 'restore'){
-  console.log('yup')
+}else{
+  let count = 0
+  fs.createReadStream(args.file)
+    .pipe(csv.parse({ headers: true }))
+    .on('data', row => {
+      rdb.set(row.key, Buffer.from(row.value, 'base64').toString('utf8'))
+      count++
+    })
+    .on('end', () => {
+      console.log(count + ' records restored')
+      rdb.quit()
+    })
 }
