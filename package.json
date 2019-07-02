@@ -9,6 +9,7 @@
   "author": "Nick Vissari <@nickadam>",
   "license": "MIT",
   "dependencies": {
+    "fast-csv": "^3.0.1",
     "redis": "^2.8.0"
   }
 }
