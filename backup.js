@@ -29,7 +29,7 @@ if(args.action === 'backup'){
       console.log(results.length + ' records backed up')
     })
   })
-}else{
+}else if(args.action == 'restore'){
   let count = 0
   fs.createReadStream(args.file)
     .pipe(csv.parse({ headers: true }))
