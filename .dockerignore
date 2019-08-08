@@ -1,6 +1,8 @@
 .git
 .gitignore
 .eslintrs.js
+.dockerignore
+.eslintrc.js
 node_modules
 LICENSE
 README.md

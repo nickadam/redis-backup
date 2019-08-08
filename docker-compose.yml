@@ -3,3 +3,12 @@ services:
   daemon:
     image: nickadam/redis-backup:1.1
     build: .
+    environment:
+      CRON_SCHEDULE: '* * * * *'
+      SERVER: redis
+    volumes:
+      - type: volume
+        source: data
+        target: /data
+volumes:
+  data: {}
