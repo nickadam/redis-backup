@@ -22,3 +22,10 @@ docker run --rm -v $PWD:/data nickadam/redis-backup  --action restore --file /da
 
 Restore reads backup files, decodes the values and stores them in a connected
 redis instance.
+
+### Service/Daemon
+
+redis-backup can also be run as a service. Backups to `SERVER` will be run based
+on the `CRON_SHEDULE` environment variables. In daemon mode, only one file will
+be created, `/data/redis_backup.csv`. You can use another service to copy this
+file to another location, for example [backup-to-smb](https://github.com/nickadam/backup-to-smb).
