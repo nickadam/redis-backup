@@ -1,0 +1,5 @@
+version: '3.5'
+services:
+  daemon:
+    image: nickadam/redis-backup:1.1
+    build: .
